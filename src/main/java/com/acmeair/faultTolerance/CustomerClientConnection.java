@@ -27,13 +27,6 @@ import java.util.logging.Logger;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import org.eclipse.microprofile.faulttolerance.Bulkhead;
-import org.eclipse.microprofile.faulttolerance.CircuitBreaker;
-import org.eclipse.microprofile.faulttolerance.Fallback;
-import org.eclipse.microprofile.faulttolerance.Retry;
-import org.eclipse.microprofile.faulttolerance.Timeout;
-import org.eclipse.microprofile.faulttolerance.exceptions.CircuitBreakerOpenException;
-import org.eclipse.microprofile.faulttolerance.exceptions.TimeoutException;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 import com.acmeair.client.CustomerClient;
@@ -55,11 +48,7 @@ public class CustomerClientConnection {
   
   // TODO: Do we really need all of these?
   //@Bulkhead(value = 50, waitingTaskQueue = 300)
-  @Retry(maxRetries=6,delayUnit=ChronoUnit.SECONDS,delay=10,durationUnit=ChronoUnit.MINUTES,maxDuration=5)
-  @Fallback(LongFallbackHandler.class)
-  @CircuitBreaker(delay=10,delayUnit = ChronoUnit.SECONDS, requestVolumeThreshold = 3, failureRatio = 1.0)
-  @Timeout(value = 30, unit = ChronoUnit.SECONDS)
-  public Long connect(String userId, Long miles) throws ConnectException, TimeoutException,CircuitBreakerOpenException,InterruptedException{
+  public Long connect(String userId, Long miles) throws ConnectException, InterruptedException{
     int executionCounter = 0;
     
     if (logger.isLoggable(Level.FINE)) {

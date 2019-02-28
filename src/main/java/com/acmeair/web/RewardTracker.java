@@ -57,7 +57,7 @@ public class RewardTracker {
    */
   //Make this asynchrnous so the client gets the booking confirmed message faster.
   //This can be done in the background
-  @Asynchronous
+  //Asynchronous
   public Future<Long> updateRewardMiles(String userid, String flightSegId, boolean add) {
     
     if (trackRewardMiles) {

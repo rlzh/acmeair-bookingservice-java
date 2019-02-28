@@ -22,6 +22,14 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
+        <repositories>
+      <repository>
+        <id>ProjectRepo</id>
+        <name>ProjectRepo</name>
+        <url>file://${project.basedir}/libs</url>
+      </repository>
+    </repositories>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -55,11 +63,21 @@
 			<scope>compile</scope>
 			<version>3.1.1</version>
 		</dependency>
-		<dependency>
-			<groupId>com.auth0</groupId>
-			<artifactId>java-jwt</artifactId>
-			<version>3.1.0</version>
-		</dependency>
+                <dependency>
+            <groupId>com.auth0.modified</groupId>
+            <artifactId>java-jwt</artifactId>
+            <version>3.4.1-modified</version>
+        </dependency>
+        <dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.7</version>
+</dependency>
+            <dependency>
+          <groupId>commons-codec</groupId>
+          <artifactId>commons-codec</artifactId>
+          <version>1.11</version>
+        </dependency>
 		<!-- microprofile-1.2 -->
 		<dependency>
 			<groupId>org.eclipse.microprofile.config</groupId>
