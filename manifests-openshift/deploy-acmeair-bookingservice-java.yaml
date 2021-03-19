@@ -27,7 +27,7 @@ spec:
             cpu: "300m"
             memory: "512Mi"
           limits:
-            cpu: "2500m"
+            cpu: "1000m"
             memory: "512Mi"
         env:
         - name: USERNAME
@@ -117,10 +117,10 @@ spec:
         resources: 
           limits:
             cpu: "200m"
-            memory: "100Mi"
+            memory: "200Mi"
           requests: 
-            cpu: "20m"
-            memory: "100Mi"
+            cpu: "100m"
+            memory: "200Mi"
         volumeMounts:
           - name: acmeair-booking-db-1
             mountPath: /data/configdb
